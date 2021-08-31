@@ -1,0 +1,31 @@
+﻿@model List<EidAssignment.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    
+    <img src="~/Images/home.jpg" width="100%" />
+</div>
+    <!--Featured Products-->
+<div class="container">
+    <h2 class="text-center">Featured Products</h2>
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img src="~/Images/@item.Image" style="height: 300px; width: 100%;">
+                    <div class="text-center"><b>@item.Title</b></div>
+                    <div class="text-center"><label> Price: </label>@item.Price</div>
+                    <div class="text-center">@item.SubCategory.Category.Name</div>
+                    <a href="~/Views/Admin/Products/@item.Id" class="col-lg-12 col-md-12 col-sm-12 btn btn-warning">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        
+    }
+
+</div>
+        

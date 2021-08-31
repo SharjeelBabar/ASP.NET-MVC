@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EidAssignment.Models.Order>
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>Orders</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "AddOrders")
+    </p>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    Client Id
+                </th>
+                <th>
+                    Order Status Id
+                </th>
+                <th>
+                    Product Id
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShippingAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                   Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ClientId
+                    </td>
+                    <td>
+                        @item.OrderStatusId
+                    </td>
+                    <td>
+                        @item.ProductId
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShippingAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        <a href="~/Admin/DelOrder/@item.Id">Delete | </a>
+                        <a href="~/Admin/EditOrder/@item.Id">Edit</a>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

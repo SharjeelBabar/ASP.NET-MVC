@@ -1,0 +1,46 @@
+﻿@model List<EidAssignment.Models.Role>
+
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>Roles</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "AddRole")
+    </p>
+    <table class="table table-bordered table-hover text-center" id="table">
+        <thead>
+            <tr >
+                <th class="text-center">
+                    Id
+                </th>
+                <th class="text-center">
+                    Name
+                </th>
+                <th class="text-center">
+                    Action
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        <a href="~/Admin/DelRole/@item.Id">Delete | </a>
+                        <a href="~/Admin/EditRole/@item.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

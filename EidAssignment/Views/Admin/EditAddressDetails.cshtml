@@ -1,0 +1,101 @@
+﻿@using EidAssignment.Models
+@model AddressDetail
+@{
+    ViewBag.Title = "EditAddressDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditAddressDetails</h2>
+
+<div class="container">
+    <div class="col-lg-4 col-lg-push-4 col-md-4 col-md-push-4">
+        <div class="panel panel-default">
+            <h2 class="text-center">Add Address Details</h2>
+            <div class="panel-body">
+                @using (Html.BeginForm("EditAddressDetails", "Admin", FormMethod.Post))
+                {
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.HiddenFor(x=>x.Id)
+                            @Html.TextBoxFor(x => x.HouseNo, new { placeholder = "Enter House No", required = "required", @class = "form-control" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.TextBoxFor(x => x.StreetNo, new { placeholder = "Enter Street No", required = "required", @class = "form-control" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.TextBoxFor(x => x.Area, new { placeholder = "Enter Area", required = "required", @class = "form-control" })
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user"></span>
+                            </span>
+                            @{
+                                List<City> Cities = ViewBag.Cities as List<City>;
+                            }
+                            <select required class="form-control" name="CityId">
+                                <option value="0"   disabled>- Select City -</option>
+                                @foreach (var item in Cities)
+                                {
+                                    <option value="@item.Id">@item.Name </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user"></span>
+                            </span>
+                            @{
+                                List<User> Users = ViewBag.Users as List<User>;
+                            }
+                            <select required class="form-control" name="UserId">
+                                <option value="0"  disabled>- Select User -</option>
+                                @foreach (var item in Users)
+                                {
+                                    <option value="@item.Id">@item.Name </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center">
+    @Html.ActionLink("Back to List", "AddressDetails")
+</div>
+

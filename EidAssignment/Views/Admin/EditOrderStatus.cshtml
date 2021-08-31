@@ -1,0 +1,46 @@
+﻿@using EidAssignment.Models
+@model OrderStatus
+@{
+    ViewBag.Title = "EditOrderStatus";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditOrderStatus</h2>
+
+<div class="container">
+    <div class="col-lg-4 col-lg-push-4 col-md-4 col-md-push-4">
+        <div class="panel panel-default">
+            <h2 class="text-center">Add Order Statuses</h2>
+            <div class="panel-body">
+                @using (Html.BeginForm("EditOrderStatus", "Admin", FormMethod.Post))
+                {
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.HiddenFor(x=>x.Id)
+                            @Html.TextBoxFor(x => x.Name, new { placeholder = "Enter Order Status", required = "required", @class = "form-control" })
+                        </div>
+
+                    </div>
+
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container text-center">
+    @Html.ActionLink("Back to List", "OrderStatuses")
+</div>
+
+

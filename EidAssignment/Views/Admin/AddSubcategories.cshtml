@@ -1,0 +1,75 @@
+﻿@using EidAssignment.Models
+@model SubCategory
+@{
+    ViewBag.Title = "AddSubcategories";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="col-lg-4 col-lg-push-4 col-md-4 col-md-push-4">
+        <div class="panel panel-default">
+            <h2 class="text-center">Add SubCategories</h2>
+            <div class="panel-body">
+                @using (Html.BeginForm("AddSubCategories", "Admin", FormMethod.Post))
+                {
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user"></span>
+                            </span>
+                            @Html.TextBoxFor(x => x.Name, new { placeholder = "Enter Name", required = "required", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.TextBoxFor(x => x.Descrition, new { placeholder = "Enter Description", required = "required", @class = "form-control" })
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.TextBoxFor(x => x.Icon, new { placeholder = "Enter Icon", required = "required", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user"></span>
+                            </span>
+                            @{
+                                List<Category> Categories = ViewBag.Categories as List<Category>;
+                            }
+                            <select required class="form-control" name="CategoryId">
+                                <option value="0" selected="selected" disabled>- Select Category -</option>
+                                @foreach (var item in Categories)
+                                {
+                                    <option value="@item.Id">@item.Name </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Add </button>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="text-center container">
+    @Html.ActionLink("Back to List", "Subcategories")
+</div>

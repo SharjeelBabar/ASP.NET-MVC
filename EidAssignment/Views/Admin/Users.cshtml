@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EidAssignment.Models.User>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2 class="text-center">Users</h2>
+    <p>
+        @Html.ActionLink("Create New", "AddUser")
+    </p>
+    <div>
+        <table class="table table-bordered table-hover table-responsive" >
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Role.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JoinedOn)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Role.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JoinedOn)
+                        </td>
+                        <td>
+                            <a href="~/Admin/DelUser/@item.Id">Delete | </a>
+                            <a href="~/Admin/EditUser/@item.Id">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+

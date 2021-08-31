@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EidAssignment.Models.ProductStatus>
+
+@{
+    ViewBag.Title = "ProductStatuses";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>ProductStatuses</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "AddProductStatuses")
+    </p>
+    <table class="table table-hover table-responsive table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        <a href="~/Admin/DelProductStatus/@item.Id">Delete | </a>
+                        <a href="~/Admin/EditProductStatus/@item.Id">Edit </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>

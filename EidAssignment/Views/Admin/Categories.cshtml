@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EidAssignment.Models.Category>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+<h2>Categories</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddCategories")
+</p>
+    <table class="table table-bordered table-hover text-center" id="table">
+        <thead >
+            <tr class="text-capitalize text-center">
+                <th>Id</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Icon)
+                </th>
+                <th>
+                    Actions
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Icon)
+                    </td>
+                    <td>
+                        <a href="~/Admin/DelCat/@item.Id">Delete | </a>
+                        <a href="~/Admin/EditCat/@item.Id">Edit </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

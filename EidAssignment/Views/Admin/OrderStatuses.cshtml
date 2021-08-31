@@ -1,0 +1,43 @@
+﻿@model List<EidAssignment.Models.OrderStatus>
+
+@{
+    ViewBag.Title = "OrderStatuses";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+<h2>OrderStatuses</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddOrderStatuses")
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>Name</th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <a href="~/Admin/EditOrderStatus/@item.Id">Edit | </a>
+                    <a href="~/Admin/DelOrderStatus/@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    </div>

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<EidAssignment.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>Products</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "AddProducts")
+    </p>
+    <table class="table table-bordered table-responsive table-hover" >
+        <thead>
+            <tr>
+
+                <th>
+                    Merchant Id
+                </th>
+                <th>
+                    Product Status Id
+                </th>
+                <th>
+                    Subcategory Id
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </th>
+                <th>
+                    Add Time
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descrpition)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.MerchantId
+                    </td>
+                    <td>
+                        @item.ProductStatusId
+                    </td>
+                    <td>
+                        @item.SubCategoryId
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>@item.Price</td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.EndTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descrpition)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        <a href="~/Admin/EditProduct/@item.Id">Edit | </a>
+                        <a href="~/Admin/DelProduct/@item.Id">Delete </a>
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

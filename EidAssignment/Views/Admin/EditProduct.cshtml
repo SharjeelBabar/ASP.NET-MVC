@@ -1,0 +1,131 @@
+﻿@using EidAssignment.Models
+@model Product
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditProduct</h2>
+
+<div class="container">
+    <div class="col-lg-4 col-lg-push-4 col-md-4 col-md-push-4">
+        <div class="panel panel-default">
+            <h2 class="text-center">Add Products</h2>
+            <div class="panel-body">
+                @using (Html.BeginForm("EditProduct", "Admin", FormMethod.Post))
+                {
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.HiddenFor(x=>x.Id)
+                            @Html.TextBoxFor(x => x.Title, new { placeholder = "Enter Product Title", required = "required", @class = "form-control" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.TextBoxFor(x => x.Descrpition, new { placeholder = "Enter Description", required = "required", @class = "form-control" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-tag"></span>
+                            </span>
+                            @Html.TextBoxFor(x => x.Price, new { placeholder = "Enter Price", required = "required", @class = "form-control" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-home"></span>
+                            </span>
+                            @Html.TextBoxFor(x => x.EndTime, new { placeholder = "Enter EndTime ", required = "required", @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user"></span>
+                            </span>
+                            @{
+                                List<User> Users = ViewBag.Users as List<User>;
+                            }
+                            <select required class="form-control" name="MerchantId">
+                                <option value="0"  disabled>- Select User -</option>
+                                @foreach (var item in Users)
+                                {
+                                    <option value="@item.Id">@item.Name </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user"></span>
+                            </span>
+                            @{
+                                List<SubCategory> subCategories = ViewBag.SubCategories as List<SubCategory>;
+                            }
+                            <select required class="form-control" name="SubCategoryId">
+                                <option value="0"  disabled>- Select Category -</option>
+                                @foreach (var item in subCategories)
+                                {
+                                    <option value="@item.Id">@item.Category.Name </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group form-inline">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user"></span>
+                            </span>
+                            @{
+                                List<ProductStatus> ProductStatuses = ViewBag.ProductStatuses as List<ProductStatus>;
+                            }
+                            <select required class="form-control" name="ProductStatusId">
+                                <option value="0"  disabled>- Select Product Status -</option>
+                                @foreach (var item in ProductStatuses)
+                                {
+                                    <option value="@item.Id">@item.Name </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center">
+    @Html.ActionLink("Back to List", "Products")
+</div>
+
+

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EidAssignment.Models.AddressDetail>
+
+@{
+    ViewBag.Title = "AddressDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>AddressDetails</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "AddAddressDetails")
+    </p>
+    <table class="table table-hover table-bordered" >
+        <thead>
+            <tr>
+                <th>
+                    City Id
+                </th>
+                <th>
+                    User Id
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HouseNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StreetNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Area)
+                </th>
+                <th>
+                    Actions
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.CityId
+                    </td>
+                    <td>
+                        @item.UserId
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HouseNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StreetNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Area)
+                    </td>
+                    <td>
+                        <a href="~/Admin/DelAddressDetails/@item.Id">Delete | </a>
+                        <a href="~/Admin/EditAddressDetails/@item.Id">Edit</a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
